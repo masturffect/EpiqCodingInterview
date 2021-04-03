@@ -1,10 +1,10 @@
 # EpiqCodingInterview
 Installations:\
   NPM ->
-    Windows:\
+    Windows:
       https://nodejs.org/en/download/ \
-    Linux (Ubuntu, Debian):\
-      $ sudo apt install npm\
+    Linux (Ubuntu, Debian):
+      $ sudo apt install npm
       OR
       $ sudo apt install npm nodejs\
     Linux (Arch Linux, Manjaro): 
