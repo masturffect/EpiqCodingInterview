@@ -1,13 +1,13 @@
 # EpiqCodingInterview
 Installations:\
-  NPM\
+  NPM ->
     Windows:\
       https://nodejs.org/en/download/ \
     Linux (Ubuntu, Debian):\
       $ sudo apt install npm\
-      OR\
+      OR
       $ sudo apt install npm nodejs\
-    Linux (Arch Linux, Manjaro):\
+    Linux (Arch Linux, Manjaro): 
       $ sudo pacman -S npm\
- React\
+ React ->
     npm install react
