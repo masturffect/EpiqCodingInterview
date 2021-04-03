@@ -1,25 +1,23 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
 import './App.css';
+import CensusTable from "./censustable/CensusTable";
 
-function App() {
+export default function App() {
+
+  const [data, setData] = useState([])
+  const [query, setQuery] = useState("")
+  useEffect(() => {
+    fetch("https://api.census.gov/data/2016/pep/population?get=POP,GEONAME&for=place:*&key=f4de31756c3fa31aab100b0cf2a657e05eaa40a3")
+    .then(response => response.json())
+    .then((json) => setData(json));
+  }, []);
+  console.log(data[0]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>filters</div>
+      <div>
+        <CensusTable data = {data} />
+      </div>
     </div>
   );
 }
-
-export default App;
