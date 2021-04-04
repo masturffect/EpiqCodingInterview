@@ -1,0 +1,31 @@
+table {
+  text-align: center;
+  margin-top: 50px;
+  width: 100%;
+}
+thead,
+tbody,
+tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+tbody {
+  display: block;
+  overflow: auto;
+  table-layout: fixed;
+  height: 800px;
+}
+
+td {
+  width: 28%;
+}
+
+tr:nth-of-type(odd) {
+  background-color: grey;
+}
+
+tr:nth-of-type(even) {
+  background-color: whitesmoke;
+}
