@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+#filters {
+  margin-top: 30px;
+}
+
+input,
+select {
+  margin-right: 40px;
+}

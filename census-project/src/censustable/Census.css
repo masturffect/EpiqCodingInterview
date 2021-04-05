@@ -11,6 +11,10 @@ tr {
   table-layout: fixed;
 }
 
+#header {
+  margin-left: "30px";
+}
+
 tbody {
   display: block;
   overflow: auto;
