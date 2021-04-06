@@ -7,8 +7,8 @@ export default function App() {
   const [data, setData] = useState([])
   const [query, setQuery] = useState("");
   const [query2, setQuery2] = useState("");
-  const minValue = 0;
-  const maxValue = 10000000;
+  const minValue = 10000;
+  const maxValue = 1000000;
   const [query3, setQuery3] = useState(minValue);
   const [query4, setQuery4] = useState(maxValue);
   
@@ -46,15 +46,14 @@ export default function App() {
       let newArr = [];
       for(let i = 0; i < geoname.length; i++){
           let first = geoname[i].split(",")[0];
-          /*let last = first.lastIndexOf(" ");
-          if(last === ){
+          let last = first.lastIndexOf(" ");
+          if(last === -1){
             newArr.push(first);
           }
           else{
             first = first.substring(0,last);
             newArr.push(first);
-          }*/
-          newArr.push(first);
+          }
       }
       return newArr;
   }
@@ -62,8 +61,15 @@ export default function App() {
   function getStates(geoname){
       let newArr = [];
       for(let i = 0; i < geoname.length; i++){
+        if(geoname[i].split(",")[2]){
+          let state = geoname[i].split(",")[2];
+          newArr.push(state);
+        }
+        else{
           let state = geoname[i].split(",")[1];
           newArr.push(state);
+        }
+          
       }
       return newArr;
   }
@@ -118,25 +124,37 @@ export default function App() {
   return (
     <div>
       <div id = "filters">
-        <label>Search for City Name
-          <input type = "text" value = {query} onChange = {(e) => setQuery(e.target.value)}/>
-        </label>
-        <label>Select a State:
-          <select value = {query2} onChange = {(e) => setQuery2(e.target.value)}>
-          <option value = "none">Select Any State</option>
-            {select_states.map(state => (
-              <option key ={state} value={state}>
-                {state}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>Minimum Population
-              <input type = "number" value = {query3} onChange = {(e) => setQuery3(e.target.value)}/>
-        </label>
-        <label>Maximum Population
-              <input type = "number" value = {query4} onChange = {(e) => setQuery4(e.target.value)}/>
-        </label>
+
+        <div id = "citysearch">
+          <label>Search for City Name
+            <input type = "text" value = {query} onChange = {(e) => setQuery(e.target.value)}/>
+          </label>
+        </div>
+
+        <div id = "stateselect">
+          <label>Select a State:
+            <select value = {query2} onChange = {(e) => setQuery2(e.target.value)}>
+            <option value = "none">Select Any State</option>
+              {select_states.map(state => (
+                <option key ={state} value={state}>
+                  {state}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+
+        <div id = "minpop">
+          <label>Minimum Population
+                <input type = "number" value = {query3} onChange = {(e) => setQuery3(e.target.value)}/>
+          </label>
+        </div>
+        
+        <div id = "maxpop">
+          <label>Maximum Population
+                <input type = "number" value = {query4} onChange = {(e) => setQuery4(e.target.value)}/>
+          </label>
+        </div>
       </div>
       <div>
         <CensusTable data = {search(tdata)} />
