@@ -5,7 +5,7 @@ import './Census.css';
 export default function CensusTable({ data }) {
     const heading = ["CityName", "State", "Population"];
     const columns = heading && Object.keys(heading);
-    const col = (arr, n) => arr.map(x => x[n]);
+    //set initial setSorts states
     const [sorts, setSorts] = useState({
         oToggle: true, 
         cToggle: false, 
@@ -19,10 +19,8 @@ export default function CensusTable({ data }) {
         sDesc: true,
 
     });
-
-    const dataCopy1 = [...data];
     
-    
+    //sets proper states when user wants to sort Population
     const onClickSortP = () => {
         setSorts({
             oToggle: false,
@@ -39,6 +37,9 @@ export default function CensusTable({ data }) {
         })
     }
 
+    //sets proper states when user wants to sort States
+    //NOTE: sorting by states seems to only be useful upon
+    //initial render since user will select a state
     const onClickSortS = () => {
         setSorts({
             oToggle: false,
@@ -55,6 +56,7 @@ export default function CensusTable({ data }) {
         })
     }
 
+    //sets proper states when user wants to sort City Names
     const onClickSortC = () => {
         setSorts({
             oToggle: false,
@@ -69,7 +71,8 @@ export default function CensusTable({ data }) {
             sDesc: !sorts.sDesc
         })
     }
-
+    
+    //Sort Cities by descending order
     function sortFunctionDescC(a, b){
         if (a[0] === b[0]){
             return 0;
@@ -78,7 +81,7 @@ export default function CensusTable({ data }) {
             return (a[0] < b[0]) ? -1 : 1;
         }
     }
-
+    //Sort Cities by ascending order
     function sortFunctionAscC(a, b){
         if (a[0] === b[0]){
             return 0;
@@ -88,6 +91,7 @@ export default function CensusTable({ data }) {
         }
     }
 
+    //Sort States by descending order
     function sortFunctionDescS(a, b){
         if (a[1] === b[1]){
             return 0;
@@ -96,7 +100,7 @@ export default function CensusTable({ data }) {
             return (a[1] < b[1]) ? -1 : 1;
         }
     }
-
+    //Sort States by ascending order
     function sortFunctionAscS(a, b){
         if (a[1] === b[1]){
             return 0;
@@ -106,9 +110,7 @@ export default function CensusTable({ data }) {
         }
     }
 
-    
-
-
+    //Sort Populations by descending order
     function sortFunctionDescP(a, b) {
         if (parseInt(a[2]) === parseInt(b[2])) {
             return 0;
@@ -117,7 +119,7 @@ export default function CensusTable({ data }) {
             return (parseInt(a[2]) < parseInt(b[2])) ? -1 : 1;
         }
     }
-
+    //Sort Populations by ascending order
     function sortFunctionAscP(a,b) {
         if (parseInt(a[2]) === parseInt(b[2])) {
             return 0;

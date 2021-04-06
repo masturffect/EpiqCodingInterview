@@ -41,11 +41,15 @@
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
+  padding-top: 40px;
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-areas: "city state min max";
+}
+
+#page-container {
+  background-color: gainsboro;
 }
 
 label,
