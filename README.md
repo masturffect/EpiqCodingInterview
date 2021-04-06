@@ -10,4 +10,11 @@ Installations:\
     -> Linux (Arch Linux, Manjaro): 
       $ sudo pacman -S npm\
  React ->
-    npm install react
+    npm install react\
+ 
+ How to run:\
+    Once pulled from repo:\
+          -> cd to census-project\
+          -> run the command npm install\
+          -> run the command npm start
+    
