@@ -11,7 +11,6 @@ Installations:\
       $ sudo pacman -S npm\
  React ->
     npm install react\
- 
  How to run:\
     Once cloned from repo:\
           -> cd to census-project\
