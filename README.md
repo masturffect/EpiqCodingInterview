@@ -13,7 +13,7 @@ Installations:\
     npm install react\
  
  How to run:\
-    Once pulled from repo:\
+    Once cloned from repo:\
           -> cd to census-project\
           -> run the command npm install\
           -> run the command npm start
