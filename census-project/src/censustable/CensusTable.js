@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { unstable_batchedUpdates } from 'react-dom';
+import { TableBody } from './TableBody'
 import './Census.css';
 
 export default function CensusTable({ data }) {
@@ -71,67 +72,7 @@ export default function CensusTable({ data }) {
             sDesc: !sorts.sDesc
         })
     }
-    
-    //Sort Cities by descending order
-    function sortFunctionDescC(a, b){
-        if (a[0] === b[0]){
-            return 0;
-        }
-        else {
-            return (a[0] < b[0]) ? -1 : 1;
-        }
-    }
-    //Sort Cities by ascending order
-    function sortFunctionAscC(a, b){
-        if (a[0] === b[0]){
-            return 0;
-        }
-        else {
-            return (a[0] > b[0]) ? -1 : 1;
-        }
-    }
-
-    //Sort States by descending order
-    function sortFunctionDescS(a, b){
-        if (a[1] === b[1]){
-            return 0;
-        }
-        else {
-            return (a[1] < b[1]) ? -1 : 1;
-        }
-    }
-    //Sort States by ascending order
-    function sortFunctionAscS(a, b){
-        if (a[1] === b[1]){
-            return 0;
-        }
-        else {
-            return (a[1] > b[1]) ? -1 : 1;
-        }
-    }
-
-    //Sort Populations by descending order
-    function sortFunctionDescP(a, b) {
-        if (parseInt(a[2]) === parseInt(b[2])) {
-            return 0;
-        }
-        else {
-            return (parseInt(a[2]) < parseInt(b[2])) ? -1 : 1;
-        }
-    }
-    //Sort Populations by ascending order
-    function sortFunctionAscP(a,b) {
-        if (parseInt(a[2]) === parseInt(b[2])) {
-            return 0;
-        }
-        else {
-            return (parseInt(a[2]) > parseInt(b[2])) ? -1 : 1;
-        }
-    }
-
-
   
-
     return (
         <div id="t-container">
             <table cellPadding={3} cellSpacing={3}>
@@ -154,64 +95,7 @@ export default function CensusTable({ data }) {
                         </button>
                     </tr>
                 </thead>
-                {sorts.oToggle && 
-                    <tbody>
-                        {data.map(row => <tr>
-                            {columns.map(columns => <td>{row[columns]}</td>)}
-                        </tr>)}
-
-                    </tbody>
-                }
-                {sorts.pToggle && sorts.pAsc &&
-                    <tbody>
-                        {data.sort(sortFunctionAscP).map(row => <tr>
-                            {columns.map(columns => <td>{row[columns]}</td>)}
-                        </tr>)}
-
-                    </tbody>
-                }
-                {sorts.pToggle && sorts.pDesc && 
-                    <tbody>
-                        {data.sort(sortFunctionDescP).map(row => <tr>
-                            {columns.map(columns => <td>{row[columns]}</td>)}
-                        </tr>)}
-
-                    </tbody>
-                }
-                {sorts.sToggle && sorts.sAsc && 
-                    <tbody>
-                        {data.sort(sortFunctionAscS).map(row => <tr>
-                            {columns.map(columns => <td>{row[columns]}</td>)}
-                        </tr>)}
-
-                    </tbody>
-                }
-                {sorts.sToggle && sorts.sDesc && 
-                    <tbody>
-                        {data.sort(sortFunctionDescS).map(row => <tr>
-                            {columns.map(columns => <td>{row[columns]}</td>)}
-                        </tr>)}
-
-                    </tbody>
-                }
-                {sorts.cToggle && sorts.cAsc && 
-                    <tbody>
-                        {data.sort(sortFunctionAscC).map(row => <tr>
-                            {columns.map(columns => <td>{row[columns]}</td>)}
-                        </tr>)}
-
-                    </tbody>
-                }
-                {sorts.cToggle && sorts.cDesc && 
-                    <tbody>
-                        {data.sort(sortFunctionDescC).map(row => <tr>
-                            {columns.map(columns => <td>{row[columns]}</td>)}
-                        </tr>)}
-
-                    </tbody>
-                }
-
-
+                <TableBody sorts={sorts} data={data} columns={columns} />
             </table>
         </div>
     )
